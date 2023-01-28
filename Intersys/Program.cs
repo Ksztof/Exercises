@@ -109,148 +109,156 @@ void CheckIfStringIsPalindrome()
 
 void IsPermutation()
 {
-	int[] firstArray = new int[11];
-	int[] secondArray = new int[11];
-	var firstArrayIsCorrectlyFilled = false;
-	var secondArrayIsCorrectlyFilled = false;
-	var isPermutation = true;
-
-	HashSet<int> firstHashSet = new HashSet<int>(firstArray);
-	HashSet<int> secondHashSet = new HashSet<int>(secondArray);
-
-	Console.WriteLine("Let's fill first array with numbers.");
-	while (!firstArrayIsCorrectlyFilled)
+	while (true)
 	{
-		for (int i = 0; i < 11; i++)
-		{
-			var userInputFirstArr = Console.ReadLine();
-			var correctUserInputFirstArr = 0;
+		int[] firstArray = new int[11];
+		int[] secondArray = new int[11];
+		var firstArrayIsCorrectlyFilled = false;
+		var secondArrayIsCorrectlyFilled = false;
+		var isPermutation = true;
 
-			if (int.TryParse(userInputFirstArr, out correctUserInputFirstArr))
+		HashSet<int> firstHashSet = new HashSet<int>(firstArray);
+		HashSet<int> secondHashSet = new HashSet<int>(secondArray);
+
+		Console.WriteLine("Let's fill first array with numbers.");
+		while (!firstArrayIsCorrectlyFilled)
+		{
+			for (int i = 0; i < 11; i++)
 			{
-				firstArray[i] = correctUserInputFirstArr;
+				var userInputFirstArr = Console.ReadLine();
+				var correctUserInputFirstArr = 0;
+
+				if (int.TryParse(userInputFirstArr, out correctUserInputFirstArr))
+				{
+					firstArray[i] = correctUserInputFirstArr;
+				}
+				else
+				{
+					Console.WriteLine("Hmmm... Input seems to be invalid, pleas give me number");
+					i--;
+				}
 			}
-			else
-			{
-				Console.WriteLine("Hmmm... Input seems to be invalid, pleas give me number");
-				i--;
-			}
+			firstArrayIsCorrectlyFilled = true;
 		}
-		firstArrayIsCorrectlyFilled = true;
-	}
 
-	Console.WriteLine("Now it's time to fill second array");
-	while (!secondArrayIsCorrectlyFilled)
-	{
-		for (int i = 0; i < 11; i++)
+		Console.WriteLine("Now it's time to fill second array");
+		while (!secondArrayIsCorrectlyFilled)
 		{
-			var userInputSecondArr = Console.ReadLine();
-			var correctUserInputSecondArr = 0;
+			for (int i = 0; i < 11; i++)
+			{
+				var userInputSecondArr = Console.ReadLine();
+				var correctUserInputSecondArr = 0;
 
-			if (int.TryParse(userInputSecondArr, out correctUserInputSecondArr))
-			{
-				secondArray[i] = correctUserInputSecondArr;
+				if (int.TryParse(userInputSecondArr, out correctUserInputSecondArr))
+				{
+					secondArray[i] = correctUserInputSecondArr;
+				}
+				else
+				{
+					Console.WriteLine("Hmmm... Input seems to be invalid, pleas give me number");
+					i--;
+				}
 			}
-			else
-			{
-				Console.WriteLine("Hmmm... Input seems to be invalid, pleas give me number");
-				i--;
-			}
+			secondArrayIsCorrectlyFilled = true;
 		}
-		secondArrayIsCorrectlyFilled = true;
-	}
 
-	//nested loop option
-	/*for (int i = 0; i < firstArray.Length; i++)
-	{
-		var found = false;
-		for (int j = 0; j < secondArray.Length; j++)
+		//nested loop option
+		/*for (int i = 0; i < firstArray.Length; i++)
 		{
-			if (firstArray[i] == secondArray[j])
+			var found = false;
+			for (int j = 0; j < secondArray.Length; j++)
 			{
-				found = true;
+				if (firstArray[i] == secondArray[j])
+				{
+					found = true;
+					break;
+				}
+			}
+			if (!found)
+			{
+				isPermutation = false;
 				break;
 			}
+
 		}
-		if (!found)
+
+		if (isPermutation)
 		{
-			isPermutation = false;
-			break;
+			Console.WriteLine("YES");
 		}
+		else Console.WriteLine("NO");*/
 
+
+		//HashMap option
+		if (firstHashSet.SetEquals(secondHashSet))
+		{
+			Console.WriteLine("YES");
+		}
+		else Console.WriteLine("NO");
 	}
-
-	if (isPermutation)
-	{
-		Console.WriteLine("YES");
-	}
-	else Console.WriteLine("NO");*/
-
-
-	//HashMap option
-	if (firstHashSet.SetEquals(secondHashSet))
-	{
-		Console.WriteLine("YES");
-	}
-	else Console.WriteLine("NO");
 }
 
 
 void ShowAppearingPowersOfTwo()
 {
-	List<uint> numbersFromInputList = new List<uint>();
-	List<uint> powersOfTwoList = new List<uint>();
-
-	Console.WriteLine("Give me some unsigned integers, separated by ,");
-	var userInput = Console.ReadLine();
-	var regex = new Regex(@"^\d+(,\d+)*$");
-	var userInputIsCorrect = false;
-
-	while(!userInputIsCorrect)
+	while (true)
 	{
-		if (!regex.IsMatch(userInput))
-		{
-			Console.WriteLine("Your input isn't correct, Give me some unsigned integers, separated by, please avoid white spaces and special characters");
-			userInput = Console.ReadLine();
-		}
-		else userInputIsCorrect = true;
-	}
-	
-	var userInputAsNumbers = userInput.Split(',');
+		Console.WriteLine();
+		List<uint> numbersFromInputList = new List<uint>();
+		List<uint> powersOfTwoList = new List<uint>();
 
-	foreach (var item in userInputAsNumbers)
-	{
-		if (uint.TryParse(item, out uint parsedItem))
-		{
-			numbersFromInputList.Add(parsedItem);
-		}
-	}
+		Console.WriteLine("Give me some unsigned integers, separated by ,");
+		var userInput = Console.ReadLine();
+		var regex = new Regex(@"^\d+(,\d+)*$");
+		var userInputIsCorrect = false;
 
-	foreach (var item in numbersFromInputList)
-	{
-		if ((item & (item - 1)) == 0)
+		while (!userInputIsCorrect)
 		{
-			if (powersOfTwoList.Contains(item))
+			if (!regex.IsMatch(userInput))
 			{
-				continue;
+				Console.WriteLine("Your input isn't correct, Give me some unsigned integers, separated by, please avoid white spaces and special characters");
+				userInput = Console.ReadLine();
 			}
-			else powersOfTwoList.Add(item);
+			else userInputIsCorrect = true;
 		}
-		else continue;
-	}
 
-	if (!powersOfTwoList.Any())
-	{
-		Console.Write("NA");
-	}
-	else
-	{
-		powersOfTwoList.Sort();
-		foreach (var item in powersOfTwoList)
+		var userInputAsNumbers = userInput.Split(',');
+
+		foreach (var item in userInputAsNumbers)
 		{
-			Console.Write($"{item}, ");
+			if (uint.TryParse(item, out uint parsedItem))
+			{
+				numbersFromInputList.Add(parsedItem);
+			}
 		}
-	};
+
+		foreach (var item in numbersFromInputList)
+		{
+			if ((item & (item - 1)) == 0)
+			{
+				if (powersOfTwoList.Contains(item) || item == 0)
+				{
+					continue;
+				}
+				else powersOfTwoList.Add(item);
+			}
+			else continue;
+		}
+
+		if (!powersOfTwoList.Any())
+		{
+			Console.Write("NA");
+		}
+		else
+		{
+			powersOfTwoList.Sort();
+			foreach (var item in powersOfTwoList)
+			{
+				Console.Write($"{item}, ");
+			}
+		};
+		Console.WriteLine();
+	}
 }
 
 
