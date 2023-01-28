@@ -1,4 +1,6 @@
 ﻿//Reverse Array
+using System.Text.RegularExpressions;
+
 void PrintReverseArray()
 {
 	int arraySize = 0;
@@ -54,4 +56,41 @@ void PrintReverseArray()
 	}*/
 	Console.WriteLine();
 }
-PrintReverseArray();
+
+
+void CheckIfStringIsPalindrome()
+{
+	string cleanedUserWord = "";
+	var inputIsEmpty = true;
+
+	Console.WriteLine("Let's check if the entered word is a palindrome! Please type some word...");
+	var userWord = Console.ReadLine();
+
+	while (inputIsEmpty)
+	{
+		
+		Console.WriteLine();
+
+		if (!string.IsNullOrWhiteSpace(userWord))
+		{
+			cleanedUserWord = Regex.Replace(userWord, "[^a-zA-Z]", "").ToLower();
+			inputIsEmpty = false;
+		}
+		else
+		{
+			Console.WriteLine("Input can't be empty, please enter a word");
+			userWord = Console.ReadLine();
+			continue;
+		}
+	}
+
+	
+
+	Console.WriteLine(cleanedUserWord);
+}
+
+
+
+
+//PrintReverseArray();
+CheckIfStringIsPalindrome();
