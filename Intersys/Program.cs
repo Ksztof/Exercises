@@ -270,10 +270,8 @@ void FindPrimes()
 		var numberOfCases = 0;
 		var numberOfCasesIsSet = false;
 		var m = "";
-		var mIsSet = false;
 		var mAsNumber = 0;
 		var n = "";
-		var nIsSet = false;
 		var nAsNumber = 0;	
 		while (!numberOfCasesIsSet)
 		{
@@ -287,39 +285,49 @@ void FindPrimes()
 				userInput = Console.ReadLine();
 			}
 		}
-
-		Console.WriteLine("Please give me m value:");
-		m = Console.ReadLine();
-
-		while (!mIsSet)
+		for (int i = 0; i < numberOfCases; i++)
 		{
-			if (int.TryParse(m, out mAsNumber))
+			var mIsSet = false;
+			var nIsSet = false;
+
+			Console.WriteLine("Please give me m value:");
+			m = Console.ReadLine();
+
+			while (!mIsSet)
 			{
-				mIsSet = true;
+				if (int.TryParse(m, out mAsNumber))
+				{
+					mIsSet = true;
+				}
+				else
+				{
+					Console.WriteLine("Input must be a number, please enter correct m value");
+					m = Console.ReadLine();
+				}
 			}
-			else
+
+			Console.WriteLine("Please give me n value:");
+			n = Console.ReadLine();
+			while (!nIsSet)
 			{
-				Console.WriteLine("Input must be a number, please enter correct m value");
-				m = Console.ReadLine();
+				if (int.TryParse(n, out nAsNumber))
+				{
+					nIsSet = true;
+				}
+				else
+				{
+					Console.WriteLine("Input must be a number, please enter correct n value");
+					n = Console.ReadLine();
+				}
+			}
+
+			for (int j = mAsNumber + 1; j < nAsNumber; j++)
+			{
+				Console.WriteLine(j);
 			}
 		}
 
-		Console.WriteLine("Please give me n value:");
-		n = Console.ReadLine();
-		while (!nIsSet)
-		{
-			if (int.TryParse(n, out nAsNumber))
-			{
-				nIsSet = true;
-			}
-			else
-			{
-				Console.WriteLine("Input must be a number, please enter correct n value");
-				n = Console.ReadLine();
-			}
-		}
 	}
-
 }
 
 
