@@ -196,6 +196,30 @@ void IsPermutation()
 }
 
 
+void ShowAppearingPowersOfTwo()
+{
+	List<uint> integersList = new List<uint>();
+	Console.WriteLine("Give me some unsigned integers, separated by ,");
+	var userInput = Console.ReadLine();
+	var userInputAsNumbers = userInput.Split(',');
+
+	foreach (var item in userInputAsNumbers)
+	{
+		if (uint.TryParse(item, out uint parsedItem))
+		{
+			integersList.Add(parsedItem);
+		}
+	}
+
+	foreach (var item in integersList)
+	{
+		Console.WriteLine(item);
+	}
+}
+
+
+
 //PrintReverseArray();
 //CheckIfStringIsPalindrome();
-IsPermutation();
+//IsPermutation();
+ShowAppearingPowersOfTwo();
