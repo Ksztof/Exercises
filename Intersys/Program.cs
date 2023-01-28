@@ -107,7 +107,95 @@ void CheckIfStringIsPalindrome()
 }
 
 
+void IsPermutation()
+{
+	int[] firstArray = new int[11];
+	int[] secondArray = new int[11];
+	var firstArrayIsCorrectlyFilled = false;
+	var secondArrayIsCorrectlyFilled = false;
+	var isPermutation = true;
+
+	HashSet<int> firstHashSet = new HashSet<int>(firstArray);
+	HashSet<int> secondHashSet = new HashSet<int>(secondArray);
+
+	Console.WriteLine("Let's fill first array with numbers.");
+	while (!firstArrayIsCorrectlyFilled)
+	{
+		for (int i = 0; i < 11; i++)
+		{
+			var userInputFirstArr = Console.ReadLine();
+			var correctUserInputFirstArr = 0;
+
+			if (int.TryParse(userInputFirstArr, out correctUserInputFirstArr))
+			{
+				firstArray[i] = correctUserInputFirstArr;
+			}
+			else
+			{
+				Console.WriteLine("Hmmm... Input seems to be invalid, pleas give me number");
+				i--;
+			}
+		}
+		firstArrayIsCorrectlyFilled = true;
+	}
+
+	Console.WriteLine("Now it's time to fill second array");
+	while (!secondArrayIsCorrectlyFilled)
+	{
+		for (int i = 0; i < 11; i++)
+		{
+			var userInputSecondArr = Console.ReadLine();
+			var correctUserInputSecondArr = 0;
+
+			if (int.TryParse(userInputSecondArr, out correctUserInputSecondArr))
+			{
+				secondArray[i] = correctUserInputSecondArr;
+			}
+			else
+			{
+				Console.WriteLine("Hmmm... Input seems to be invalid, pleas give me number");
+				i--;
+			}
+		}
+		secondArrayIsCorrectlyFilled = true;
+	}
+
+	//nested loop option
+	/*for (int i = 0; i < firstArray.Length; i++)
+	{
+		var found = false;
+		for (int j = 0; j < secondArray.Length; j++)
+		{
+			if (firstArray[i] == secondArray[j])
+			{
+				found = true;
+				break;
+			}
+		}
+		if (!found)
+		{
+			isPermutation = false;
+			break;
+		}
+
+	}
+
+	if (isPermutation)
+	{
+		Console.WriteLine("YES");
+	}
+	else Console.WriteLine("NO");*/
 
 
-PrintReverseArray();
+	//HashMap option
+	if (firstHashSet.SetEquals(secondHashSet))
+	{
+		Console.WriteLine("YES");
+	}
+	else Console.WriteLine("NO");
+}
+
+
+//PrintReverseArray();
 //CheckIfStringIsPalindrome();
+IsPermutation();
