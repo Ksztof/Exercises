@@ -60,33 +60,45 @@ void PrintReverseArray()
 
 void CheckIfStringIsPalindrome()
 {
-	string cleanedUserWord = "";
-	var inputIsEmpty = true;
-
-	Console.WriteLine("Let's check if the entered word is a palindrome! Please type some word...");
-	var userWord = Console.ReadLine();
-
-	while (inputIsEmpty)
+	while (true)
 	{
-		
-		Console.WriteLine();
+		Console.WriteLine("Let's check if the entered word is a palindrome! Please type some word...");
+		var userWord = Console.ReadLine();
+		string cleanedUserWord = "";
+		string reversedCleanedUserWord = "";
+		var inputIsEmpty = true;
 
-		if (!string.IsNullOrWhiteSpace(userWord))
+		while (inputIsEmpty)
 		{
-			cleanedUserWord = Regex.Replace(userWord, "[^a-zA-Z]", "").ToLower();
-			inputIsEmpty = false;
+
+			Console.WriteLine();
+
+			if (!string.IsNullOrWhiteSpace(userWord))
+			{
+				cleanedUserWord = Regex.Replace(userWord, "[^a-zA-Z]", "").ToLower();
+				reversedCleanedUserWord = new string(cleanedUserWord.Reverse().ToArray());
+				inputIsEmpty = false;
+			}
+			else
+			{
+				Console.WriteLine("Input can't be empty, please enter a word");
+				userWord = Console.ReadLine();
+				continue;
+			}
+		}
+
+		if (cleanedUserWord != reversedCleanedUserWord)
+		{
+			Console.WriteLine("NO");
+			Console.WriteLine();
 		}
 		else
 		{
-			Console.WriteLine("Input can't be empty, please enter a word");
-			userWord = Console.ReadLine();
-			continue;
+			Console.WriteLine("YES");
+			Console.WriteLine();
 		}
 	}
-
 	
-
-	Console.WriteLine(cleanedUserWord);
 }
 
 
