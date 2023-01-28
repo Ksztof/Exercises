@@ -261,9 +261,71 @@ void ShowAppearingPowersOfTwo()
 	}
 }
 
+void FindPrimes()
+{
+	while (true)
+	{
+		Console.WriteLine("how many cases do you want to consider?");
+		var userInput = Console.ReadLine();
+		var numberOfCases = 0;
+		var numberOfCasesIsSet = false;
+		var m = "";
+		var mIsSet = false;
+		var mAsNumber = 0;
+		var n = "";
+		var nIsSet = false;
+		var nAsNumber = 0;	
+		while (!numberOfCasesIsSet)
+		{
+			if (int.TryParse(userInput, out numberOfCases))
+			{
+				numberOfCasesIsSet = true;
+			}
+			else
+			{
+				Console.WriteLine("Input must be a number, please enter correct value");
+				userInput = Console.ReadLine();
+			}
+		}
+
+		Console.WriteLine("Please give me m value:");
+		m = Console.ReadLine();
+
+		while (!mIsSet)
+		{
+			if (int.TryParse(m, out mAsNumber))
+			{
+				mIsSet = true;
+			}
+			else
+			{
+				Console.WriteLine("Input must be a number, please enter correct m value");
+				m = Console.ReadLine();
+			}
+		}
+
+		Console.WriteLine("Please give me n value:");
+		n = Console.ReadLine();
+		while (!nIsSet)
+		{
+			if (int.TryParse(n, out nAsNumber))
+			{
+				nIsSet = true;
+			}
+			else
+			{
+				Console.WriteLine("Input must be a number, please enter correct n value");
+				n = Console.ReadLine();
+			}
+		}
+	}
+
+}
 
 
 //PrintReverseArray();
 //CheckIfStringIsPalindrome();
 //IsPermutation();
-ShowAppearingPowersOfTwo();
+//ShowAppearingPowersOfTwo();
+FindPrimes();
+
