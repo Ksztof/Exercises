@@ -1,0 +1,15 @@
+C:\Users\PeklerFix\Desktop\Intersys\Intersys\Intersys\bin\Debug\net6.0\Intersys.exe
+C:\Users\PeklerFix\Desktop\Intersys\Intersys\Intersys\bin\Debug\net6.0\Intersys.deps.json
+C:\Users\PeklerFix\Desktop\Intersys\Intersys\Intersys\bin\Debug\net6.0\Intersys.runtimeconfig.json
+C:\Users\PeklerFix\Desktop\Intersys\Intersys\Intersys\bin\Debug\net6.0\Intersys.dll
+C:\Users\PeklerFix\Desktop\Intersys\Intersys\Intersys\bin\Debug\net6.0\Intersys.pdb
+C:\Users\PeklerFix\Desktop\Intersys\Intersys\Intersys\obj\Debug\net6.0\Intersys.csproj.AssemblyReference.cache
+C:\Users\PeklerFix\Desktop\Intersys\Intersys\Intersys\obj\Debug\net6.0\Intersys.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PeklerFix\Desktop\Intersys\Intersys\Intersys\obj\Debug\net6.0\Intersys.AssemblyInfoInputs.cache
+C:\Users\PeklerFix\Desktop\Intersys\Intersys\Intersys\obj\Debug\net6.0\Intersys.AssemblyInfo.cs
+C:\Users\PeklerFix\Desktop\Intersys\Intersys\Intersys\obj\Debug\net6.0\Intersys.csproj.CoreCompileInputs.cache
+C:\Users\PeklerFix\Desktop\Intersys\Intersys\Intersys\obj\Debug\net6.0\Intersys.dll
+C:\Users\PeklerFix\Desktop\Intersys\Intersys\Intersys\obj\Debug\net6.0\refint\Intersys.dll
+C:\Users\PeklerFix\Desktop\Intersys\Intersys\Intersys\obj\Debug\net6.0\Intersys.pdb
+C:\Users\PeklerFix\Desktop\Intersys\Intersys\Intersys\obj\Debug\net6.0\Intersys.genruntimeconfig.cache
+C:\Users\PeklerFix\Desktop\Intersys\Intersys\Intersys\obj\Debug\net6.0\ref\Intersys.dll

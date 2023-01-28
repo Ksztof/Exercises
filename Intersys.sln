@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intersys", "Intersys\Intersys.csproj", "{CE2002BD-DD91-4F2F-B630-4E459D6653DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE2002BD-DD91-4F2F-B630-4E459D6653DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE2002BD-DD91-4F2F-B630-4E459D6653DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE2002BD-DD91-4F2F-B630-4E459D6653DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE2002BD-DD91-4F2F-B630-4E459D6653DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E504C39-DB56-4928-8706-0D6E81552491}
+	EndGlobalSection
+EndGlobal
