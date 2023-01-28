@@ -272,7 +272,9 @@ void FindPrimes()
 		var m = "";
 		var mAsNumber = 0;
 		var n = "";
-		var nAsNumber = 0;	
+		var nAsNumber = 0;
+		List<int> results = new List<int>();
+
 		while (!numberOfCasesIsSet)
 		{
 			if (int.TryParse(userInput, out numberOfCases))
@@ -320,12 +322,31 @@ void FindPrimes()
 					n = Console.ReadLine();
 				}
 			}
-
-			for (int j = mAsNumber + 1; j < nAsNumber; j++)
+			var primesCounter = 0;
+			for (int j = mAsNumber + 1; j <= nAsNumber; j++)
 			{
-				Console.WriteLine(j);
+				var isPrime = true;
+				for (int k = 2; k <= Math.Sqrt(j); k++)
+				{
+					if (j % k == 0)
+					{
+						isPrime = false;
+						break;
+					}
+				}
+				if (isPrime)
+				{
+					primesCounter++;
+				}
 			}
+			results.Add(primesCounter);		
 		}
+		Console.WriteLine();
+		foreach (var result in results)
+		{
+			Console.WriteLine(result);
+		}
+		Console.WriteLine();
 
 	}
 }
