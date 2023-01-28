@@ -201,6 +201,19 @@ void ShowAppearingPowersOfTwo()
 	List<uint> integersList = new List<uint>();
 	Console.WriteLine("Give me some unsigned integers, separated by ,");
 	var userInput = Console.ReadLine();
+	var regex = new Regex(@"^\d+(,\d+)*$");
+	var userInputIsCorrect = false;
+
+	while(!userInputIsCorrect)
+	{
+		if (!regex.IsMatch(userInput))
+		{
+			Console.WriteLine("Your input isn't correct, Give me some unsigned integers, separated by, please avoid white spaces and special characters");
+			userInput = Console.ReadLine();
+		}
+		else userInputIsCorrect = true;
+	}
+	
 	var userInputAsNumbers = userInput.Split(',');
 
 	foreach (var item in userInputAsNumbers)
