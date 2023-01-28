@@ -198,7 +198,9 @@ void IsPermutation()
 
 void ShowAppearingPowersOfTwo()
 {
-	List<uint> integersList = new List<uint>();
+	List<uint> numbersFromInputList = new List<uint>();
+	List<uint> powersOfTwoList = new List<uint>();
+
 	Console.WriteLine("Give me some unsigned integers, separated by ,");
 	var userInput = Console.ReadLine();
 	var regex = new Regex(@"^\d+(,\d+)*$");
@@ -220,14 +222,35 @@ void ShowAppearingPowersOfTwo()
 	{
 		if (uint.TryParse(item, out uint parsedItem))
 		{
-			integersList.Add(parsedItem);
+			numbersFromInputList.Add(parsedItem);
 		}
 	}
 
-	foreach (var item in integersList)
+	foreach (var item in numbersFromInputList)
 	{
-		Console.WriteLine(item);
+		if ((item & (item - 1)) == 0)
+		{
+			if (powersOfTwoList.Contains(item))
+			{
+				continue;
+			}
+			else powersOfTwoList.Add(item);
+		}
+		else continue;
 	}
+
+	if (!powersOfTwoList.Any())
+	{
+		Console.Write("NA");
+	}
+	else
+	{
+		powersOfTwoList.Sort();
+		foreach (var item in powersOfTwoList)
+		{
+			Console.Write($"{item}, ");
+		}
+	};
 }
 
 
