@@ -287,6 +287,7 @@ void FindPrimes()
 				userInput = Console.ReadLine();
 			}
 		}
+
 		for (int i = 0; i < numberOfCases; i++)
 		{
 			var mIsSet = false;
@@ -322,6 +323,42 @@ void FindPrimes()
 					n = Console.ReadLine();
 				}
 			}
+
+			while (nAsNumber - mAsNumber > 100000)
+			{
+				Console.WriteLine("the interval between m and n cannot be greater than 100000, please give me correct values. First give me the value for m:");
+				m = Console.ReadLine();
+				mIsSet = false;
+				while (!mIsSet)
+				{
+					if (int.TryParse(m, out mAsNumber))
+					{
+						mIsSet = true;
+					}
+					else
+					{
+						Console.WriteLine("Input must be a number, please enter correct m value");
+						m = Console.ReadLine();
+					}
+				}
+				Console.WriteLine("Please give me n value:");
+				n = Console.ReadLine();
+				nIsSet = false;
+				while (!nIsSet)
+				{
+					if (int.TryParse(n, out nAsNumber))
+					{
+						nIsSet = true;
+					}
+					else
+					{
+						Console.WriteLine("Input must be a number, please enter correct n value");
+						n = Console.ReadLine();
+					}
+				}
+			}
+
+
 			var primesCounter = 0;
 			for (int j = mAsNumber + 1; j <= nAsNumber; j++)
 			{
@@ -339,8 +376,9 @@ void FindPrimes()
 					primesCounter++;
 				}
 			}
-			results.Add(primesCounter);		
+			results.Add(primesCounter);
 		}
+
 		Console.WriteLine();
 		foreach (var result in results)
 		{
