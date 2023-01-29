@@ -433,7 +433,7 @@ void FindMostOccurringDigit()
 				else
 				{
 					Console.WriteLine("Value should be a number. Please enter correct value");
-					input = Console.ReadLine();
+					i--;
 				}
 			}
 			arrayIsFilled = true;
@@ -458,10 +458,68 @@ void FindMostOccurringDigit()
 }
 
 
+void findBiggestDigitSum()
+{
+	while (true)
+	{
+		Console.WriteLine("Specify how many numbers the array should cointain");
+		Console.Write("Set array size: ");
+		var arraySize = Console.ReadLine();
+		var arraySizeIsCorrect = false;
+		var arraySizeAsNumber = 0;
+		int[] userNumbersArray = Array.Empty<int>();
+		var arrayIsFilled = false;
+
+		while (!arraySizeIsCorrect)
+		{
+			if (int.TryParse(arraySize, out arraySizeAsNumber))
+			{
+				arraySizeIsCorrect = true;
+				userNumbersArray = new int[arraySizeAsNumber];
+			}
+			else
+			{
+				Console.WriteLine("Value should be a number. Please enter correct value");
+				arraySize = Console.ReadLine();
+			}
+		}
+
+		Console.WriteLine("Time to fill the array, give me some numbers");
+		while (!arrayIsFilled)
+		{
+			for (int i = 0; i < arraySizeAsNumber; i++)
+			{
+				Console.Write($"number {i + 1} is: ");
+				var input = Console.ReadLine();
+				var inputAsNumber = 0;
+				if (int.TryParse(input, out inputAsNumber))
+				{
+					userNumbersArray[i] = inputAsNumber;
+				}
+				else
+				{
+					Console.WriteLine("Value should be a number. Please enter correct value");
+					i--;
+				}
+			}
+			arrayIsFilled = true;
+		}
+
+		foreach (var item in userNumbersArray)
+		{
+			Console.WriteLine(item);
+		}
+	}
+}
+
+
+
+
 
 //PrintReverseArray();
 //CheckIfStringIsPalindrome();
 //IsPermutation();
 //ShowAppearingPowersOfTwo();
 //FindPrimes();
-FindMostOccurringDigit();
+//FindMostOccurringDigit();
+findBiggestDigitSum();
