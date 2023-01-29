@@ -395,17 +395,21 @@ void FindMostOccurringDigit()
 {
 	while (true)
 	{
-		Console.WriteLine("Specify how many numbers the array should cointain");
+		Console.WriteLine("Specify how many numbers the array should cointain, you can choose between 2 and 20 inclusive");
+		Console.Write("Set array size: ");
 		var arraySize = Console.ReadLine();
 		var arraySizeIsCorrect = false;
 		var arraySizeAsNumber = 0;
 		int[] userNumbersArray = Array.Empty<int>();
+		var arrayIsFilled = false;
+		Dictionary<int, int> occurrencesNumber = new Dictionary<int, int>();
 
 		while (!arraySizeIsCorrect)
 		{
 			if (int.TryParse(arraySize, out arraySizeAsNumber) && (int.Parse(arraySize) >= 2 && int.Parse(arraySize) <= 20))
 			{
 				arraySizeIsCorrect = true;
+				userNumbersArray = new int[arraySizeAsNumber];
 			}
 			else
 			{
@@ -414,9 +418,42 @@ void FindMostOccurringDigit()
 			}
 		}
 
+		Console.WriteLine("Time to fill the array, give me some numbers");
+		while (!arrayIsFilled)
+		{
+			for (int i = 0; i < arraySizeAsNumber; i++)
+			{
+				Console.Write($"number {i+1} is: ");
+				var input = Console.ReadLine();
+				var inputAsNumber = 0;
+				if (int.TryParse(input, out inputAsNumber))
+				{
+					userNumbersArray[i] = inputAsNumber;
+				}
+				else
+				{
+					Console.WriteLine("Value should be a number. Please enter correct value");
+					input = Console.ReadLine();
+				}
+			}
+			arrayIsFilled = true;
+		}
+			
+		foreach (int number in userNumbersArray)
+		{
+			if (occurrencesNumber.ContainsKey(number))
+			{
+				occurrencesNumber[number]++;
+			}
+			else
+			{
+				occurrencesNumber[number] = 1;
+			}
+		}
+		int getMostOccuredValues = occurrencesNumber.Values.Max();
+		int mostOccuredNumber = occurrencesNumber.Where(x => x.Value == getMostOccuredValues).OrderByDescending(x => x.Key).First().Key;
 
-
-
+		Console.WriteLine(mostOccuredNumber);
 	}
 }
 
