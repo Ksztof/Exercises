@@ -469,6 +469,8 @@ void findBiggestDigitSum()
 		var arraySizeAsNumber = 0;
 		int[] userNumbersArray = Array.Empty<int>();
 		var arrayIsFilled = false;
+		int maxDigitSum = int.MinValue;
+		int maxDigitSumIndex = -10;
 
 		while (!arraySizeIsCorrect)
 		{
@@ -507,8 +509,15 @@ void findBiggestDigitSum()
 
 		foreach (var item in userNumbersArray)
 		{
-			Console.WriteLine(item);
+			var digitSum = item.ToString().Select(c => int.Parse(c.ToString())).Sum();
+			if (digitSum > maxDigitSum)
+			{
+				maxDigitSum = digitSum;
+				maxDigitSumIndex = Array.IndexOf(userNumbersArray, item); ;
+			}
 		}
+
+		Console.WriteLine(maxDigitSumIndex);
 	}
 }
 
