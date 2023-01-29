@@ -1,4 +1,5 @@
 ﻿//Reverse Array
+using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 
 void PrintReverseArray()
@@ -7,7 +8,7 @@ void PrintReverseArray()
 	{
 		int arraySize = 0;
 		bool setArraySizeSuccess = false;
-		string[] inputsArray = new string[0];
+		string[] inputsArray = Array.Empty<string>();
 
 		while (!setArraySizeSuccess)
 		{
@@ -390,9 +391,40 @@ void FindPrimes()
 }
 
 
+void FindMostOccurringDigit()
+{
+	while (true)
+	{
+		Console.WriteLine("Specify how many numbers the array should cointain");
+		var arraySize = Console.ReadLine();
+		var arraySizeIsCorrect = false;
+		var arraySizeAsNumber = 0;
+		int[] userNumbersArray = Array.Empty<int>();
+
+		while (!arraySizeIsCorrect)
+		{
+			if (int.TryParse(arraySize, out arraySizeAsNumber) && (int.Parse(arraySize) >= 2 && int.Parse(arraySize) <= 20))
+			{
+				arraySizeIsCorrect = true;
+			}
+			else
+			{
+				Console.WriteLine("Value should be a number. Please enter correct value");
+				arraySize = Console.ReadLine();
+			}
+		}
+
+
+
+
+	}
+}
+
+
+
 //PrintReverseArray();
 //CheckIfStringIsPalindrome();
 //IsPermutation();
 //ShowAppearingPowersOfTwo();
-FindPrimes();
-
+//FindPrimes();
+FindMostOccurringDigit();
