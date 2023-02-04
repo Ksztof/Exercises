@@ -1,4 +1,4 @@
-﻿function alertYourInput() {
+﻿function exercise1() {
 	let button = document.createElement("button");
 	button.innerHTML = "alert your input";
 	button.style.color = "black";
