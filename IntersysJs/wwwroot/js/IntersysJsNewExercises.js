@@ -1,12 +1,16 @@
-﻿function exercise1() {
+﻿function exercise1()
+{
 	let formAdded = false;
 	let button = document.createElement("button");
 	button.innerHTML = "exercise1";
 	button.style.color = "black";
 	button.style.backgroundColor = "white";
+	button.style.display = "inline-block";
 
-	button.addEventListener("click", function () {
-		if (!formAdded) {
+	button.addEventListener("click", function ()
+	{
+		if (!formAdded)
+		{
 			let form = document.createElement("form");
 			form.id = "alertFormInput";
 			let input = document.createElement("input");
@@ -19,7 +23,8 @@
 			document.body.appendChild(form);
 			formAdded = true;
 
-			form.addEventListener("submit", function () {
+			form.addEventListener("submit", function ()
+			{
 				let userInput = input.value;
 				alert(userInput);
 			});
@@ -29,13 +34,16 @@
 }
 
 
-function exercise2() {
+function exercise2()
+{
 	let formAdded = false;
 	let button = document.createElement("button")
 	button.innerHTML = "exercise2";
 
-	button.addEventListener("click", function () {
-		if (!formAdded) {
+	button.addEventListener("click", function ()
+	{
+		if (!formAdded)
+		{
 			let form = document.createElement("form");
 			form.id = "exercise2FormId";
 			let input = document.createElement("input");
@@ -48,7 +56,8 @@ function exercise2() {
 			document.body.appendChild(form);
 			formAdded = true;
 
-			form.addEventListener("submit", function (event) {
+			form.addEventListener("submit", function (event)
+			{
 				event.preventDefault();
 				createTable(form, input.value);
 			});
@@ -59,15 +68,18 @@ function exercise2() {
 }
 
 
-function sendData(url, data, type, successCallback) {
+function sendData(url, data, type, successCallback)
+{
 	$.ajax({
 		type: type,
 		url: url,
 		contentType: 'application/json; charset=utf-8',
 		data: (type === 'POST') ? JSON.stringify(data) : data,
-		success: function (response) {
+		success: function (response)
+		{
 			console.log("sendData success:", response);
-			if (successCallback) {
+			if (successCallback)
+			{
 				successCallback(response);
 			}
 		}
@@ -80,8 +92,10 @@ function exercise3() {
 	let button = document.createElement("button");
 	button.innerHTML = "exercise3";
 
-	button.addEventListener("click", function () {
-		if (!formAdded) {
+	button.addEventListener("click", function ()
+	{
+		if (!formAdded)
+		{
 			let form = document.createElement("form");
 			let input = document.createElement("input");
 			let submitButton = document.createElement("input");
@@ -93,14 +107,17 @@ function exercise3() {
 			document.body.appendChild(form);
 			formAdded = true;
 
-			form.addEventListener("submit", function (e) {
+			form.addEventListener("submit", function (e)
+			{
 				e.preventDefault();
 				let inputAsNumber = parseFloat(input.value);
-				if (isNaN(inputAsNumber) || isNaN(input.value)) {
+				if (isNaN(inputAsNumber) || isNaN(input.value))
+				{
 					alert("Please enter number")
 				} else {
 					var data = { UserInput: inputAsNumber };
-					sendData('/Intersys/ThirdExercise', data, 'POST', function (response) {
+					sendData('/Intersys/ThirdExercise', data, 'POST', function (response)
+					{
 						console.log("successCallback response:", response);
 						//let responseData = JSON.parse(response);
 						let doubleUserInput = response.doubleUserInput;
@@ -120,9 +137,13 @@ function exercise4() {
 	let formAdded = false;
 	let button = document.createElement("button");
 	button.innerHTML = "exercise4";
+	button.style.display = "inline-block";
 
-	button.addEventListener("click", function () {
-		if (!formAdded) {
+
+	button.addEventListener("click", function ()
+	{
+		if (!formAdded)
+		{
 			let form = document.createElement("form");
 			let input = document.createElement("input");
 			let submitButton = document.createElement("input");
@@ -134,14 +155,16 @@ function exercise4() {
 			document.body.appendChild(form);
 			formAdded = true;
 
-			form.addEventListener("submit", function (e) {
+			form.addEventListener("submit", function (e)
+			{
 				e.preventDefault();
 				let inputAsNumber = parseFloat(input.value);
 				if (isNaN(inputAsNumber) || isNaN(input.value) || inputAsNumber <= 0 || inputAsNumber > 100) {
 					alert("Please enter number from range 1 to 100")
 				} else {
 					let data = { UserInput: inputAsNumber };
-					sendData('/Intersys/FourthExercise', data, 'POST', function (response) {
+					sendData('/Intersys/FourthExercise', data, 'POST', function (response)
+					{
 						console.log("successCallback response:", response);
 						let user = response.firstName + " " + response.lastName;
 						createTable(form, user)
@@ -152,12 +175,11 @@ function exercise4() {
 	});
 
 	document.body.appendChild(button);
-
 }
 
-function exercise5() {
+function exercise5()
+{
 	let tableAdded = false;
-	let formAdded = false;
 	let button = document.createElement("button");
 	button.innerHTML = "exercise5";
 	let div = document.createElement("div");
@@ -165,8 +187,10 @@ function exercise5() {
 
 	button.addEventListener("click", function () {
 
-		if (!tableAdded) {
-			sendData('/Intersys/FifthExercise', {}, 'GET', function (response) {
+		if (!tableAdded)
+		{
+			sendData('/Intersys/FifthExercise', {}, 'GET', function (response)
+			{
 
 				let form = document.createElement("form");
 
@@ -177,10 +201,11 @@ function exercise5() {
 				submitButton.type = "submit";
 				submitButton.value = "Submit";
 
+
 				form.appendChild(input1);
 				form.appendChild(input2);
 				form.appendChild(submitButton);
-				document.body.appendChild(form);
+				div.insertBefore(form, div.firstChild);
 
 				let users = response;
 				let table = document.createElement("table");
@@ -195,7 +220,8 @@ function exercise5() {
 				headerRow.appendChild(lastNameHeaderCell);
 				table.appendChild(headerRow);
 
-				for (var i = 0; i < users.length; i++) {
+				for (var i = 0; i < users.length; i++)
+				{
 					let row = document.createElement("tr");
 					let firstNameCell = document.createElement("td");
 					firstNameCell.style.border = "2px solid blue";
@@ -212,15 +238,20 @@ function exercise5() {
 				tableAdded = true;
 				div.appendChild(table);
 
-				form.addEventListener("submit", function (e) {
+				form.addEventListener("submit", function (e)
+				{
 					e.preventDefault();
 					let firstName = input1.value.trim();
 					let lastName = input2.value.trim();
-					if (firstName === "" || lastName === "") {
+					if (firstName === "" || lastName === "")
+					{
 						alert("Give me some input.");
-					} else {
+					}
+					else
+					{
 						let data = { FirstName: firstName, LastName: lastName };
-						sendData('/Intersys/FifthExercise', data, 'POST', function (response) {
+						sendData('/Intersys/FifthExercise', data, 'POST', function (response)
+						{
 							console.log("successCallback response:", response);
 							let firstName = response.firstName;
 							let lastName = response.lastName
@@ -246,12 +277,12 @@ function exercise5() {
 	});
 
 	document.body.appendChild(div);
-	document.body.appendChild(button);
-
+	div.appendChild(button);
 }
 
 
-function createTable(yourForm, input) {
+function createTable(yourForm, input)
+{
 	let userInput = input;
 	let table = document.createElement("table");
 	let headerRow = document.createElement("tr");
