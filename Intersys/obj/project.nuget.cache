@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "IyUQ3V3bjVZ7opSDAQWcEdBp0m5j1ZAXIiU+Tre6nJwgfA4KKYwITEzlpbd5gutZlv3vcaZme0SmZZ/iKafSGg==",
+  "dgSpecHash": "TJc6ETrrzTHLiGVYjTf+yViUSf97uybsGuGeB1FrFjLjXoYgZmq5d9KACBED6pCZFRYXa3qOENY+5YrSvuuyCQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\PeklerFix\\Desktop\\Intersys\\Intersys\\Intersys\\Intersys.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\PeklerFix\\.nuget\\packages\\jquery\\3.6.3\\jquery.3.6.3.nupkg.sha512"
+  ],
   "logs": []
 }

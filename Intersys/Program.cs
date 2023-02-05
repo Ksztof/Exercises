@@ -76,7 +76,6 @@ void CheckIfStringIsPalindrome()
 
 		while (inputIsEmpty)
 		{
-
 			Console.WriteLine();
 
 			if (!string.IsNullOrWhiteSpace(userWord))
@@ -521,7 +520,15 @@ void findBiggestDigitSum()
 	}
 }
 
+ 
 
+void Test()
+{
+
+	
+	
+
+}
 
 
 
@@ -531,4 +538,6 @@ void findBiggestDigitSum()
 //ShowAppearingPowersOfTwo();
 //FindPrimes();
 //FindMostOccurringDigit();
-findBiggestDigitSum();
+/*findBiggestDigitSum();
+*/
+Test();

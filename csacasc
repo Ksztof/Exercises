@@ -1,0 +1,110 @@
+[1mdiff --git a/.vs/Intersys/DesignTimeBuild/.dtbcache.v2 b/.vs/Intersys/DesignTimeBuild/.dtbcache.v2[m
+[1mindex 86121cc..8361b67 100644[m
+Binary files a/.vs/Intersys/DesignTimeBuild/.dtbcache.v2 and b/.vs/Intersys/DesignTimeBuild/.dtbcache.v2 differ
+[1mdiff --git a/.vs/Intersys/v17/.suo b/.vs/Intersys/v17/.suo[m
+[1mindex f78ff42..8aae489 100644[m
+Binary files a/.vs/Intersys/v17/.suo and b/.vs/Intersys/v17/.suo differ
+[1mdiff --git a/Intersys.sln b/Intersys.sln[m
+[1mindex 2efa2cc..6e79de7 100644[m
+[1m--- a/Intersys.sln[m
+[1m+++ b/Intersys.sln[m
+[36m@@ -3,7 +3,9 @@[m [mMicrosoft Visual Studio Solution File, Format Version 12.00[m
+ # Visual Studio Version 17[m
+ VisualStudioVersion = 17.3.32804.467[m
+ MinimumVisualStudioVersion = 10.0.40219.1[m
+[31m-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intersys", "Intersys\Intersys.csproj", "{CE2002BD-DD91-4F2F-B630-4E459D6653DF}"[m
+[32m+[m[32mProject("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intersys", "Intersys\Intersys.csproj", "{CE2002BD-DD91-4F2F-B630-4E459D6653DF}"[m
+[32m+[m[32mEndProject[m
+[32m+[m[32mProject("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntersysJs", "IntersysJs\IntersysJs.csproj", "{AFC83775-67EC-446A-A9BA-1B09568F6EDE}"[m
+ EndProject[m
+ Global[m
+ 	GlobalSection(SolutionConfigurationPlatforms) = preSolution[m
+[36m@@ -15,6 +17,10 @@[m [mGlobal[m
+ 		{CE2002BD-DD91-4F2F-B630-4E459D6653DF}.Debug|Any CPU.Build.0 = Debug|Any CPU[m
+ 		{CE2002BD-DD91-4F2F-B630-4E459D6653DF}.Release|Any CPU.ActiveCfg = Release|Any CPU[m
+ 		{CE2002BD-DD91-4F2F-B630-4E459D6653DF}.Release|Any CPU.Build.0 = Release|Any CPU[m
+[32m+[m		[32m{AFC83775-67EC-446A-A9BA-1B09568F6EDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU[m
+[32m+[m		[32m{AFC83775-67EC-446A-A9BA-1B09568F6EDE}.Debug|Any CPU.Build.0 = Debug|Any CPU[m
+[32m+[m		[32m{AFC83775-67EC-446A-A9BA-1B09568F6EDE}.Release|Any CPU.ActiveCfg = Release|Any CPU[m
+[32m+[m		[32m{AFC83775-67EC-446A-A9BA-1B09568F6EDE}.Release|Any CPU.Build.0 = Release|Any CPU[m
+ 	EndGlobalSection[m
+ 	GlobalSection(SolutionProperties) = preSolution[m
+ 		HideSolutionNode = FALSE[m
+[1mdiff --git a/Intersys/Program.cs b/Intersys/Program.cs[m
+[1mindex e9cc410..7ba59d3 100644[m
+[1m--- a/Intersys/Program.cs[m
+[1m+++ b/Intersys/Program.cs[m
+[36m@@ -394,5 +394,5 @@[m [mvoid FindPrimes()[m
+ //CheckIfStringIsPalindrome();[m
+ //IsPermutation();[m
+ //ShowAppearingPowersOfTwo();[m
+[31m-FindPrimes();[m
+[32m+[m[32m//FindPrimes();[m
+ [m
+[1mdiff --git a/Intersys/bin/Debug/net6.0/Intersys.dll b/Intersys/bin/Debug/net6.0/Intersys.dll[m
+[1mindex cc2bec4..8474c41 100644[m
+Binary files a/Intersys/bin/Debug/net6.0/Intersys.dll and b/Intersys/bin/Debug/net6.0/Intersys.dll differ
+[1mdiff --git a/Intersys/bin/Debug/net6.0/Intersys.pdb b/Intersys/bin/Debug/net6.0/Intersys.pdb[m
+[1mindex bfab49c..7f28385 100644[m
+Binary files a/Intersys/bin/Debug/net6.0/Intersys.pdb and b/Intersys/bin/Debug/net6.0/Intersys.pdb differ
+[1mdiff --git a/Intersys/obj/Debug/net6.0/Intersys.dll b/Intersys/obj/Debug/net6.0/Intersys.dll[m
+[1mindex cc2bec4..8474c41 100644[m
+Binary files a/Intersys/obj/Debug/net6.0/Intersys.dll and b/Intersys/obj/Debug/net6.0/Intersys.dll differ
+[1mdiff --git a/Intersys/obj/Debug/net6.0/Intersys.pdb b/Intersys/obj/Debug/net6.0/Intersys.pdb[m
+[1mindex bfab49c..7f28385 100644[m
+Binary files a/Intersys/obj/Debug/net6.0/Intersys.pdb and b/Intersys/obj/Debug/net6.0/Intersys.pdb differ
+[1mdiff --git a/IntersysJs/wwwroot/js/Index.js b/IntersysJs/wwwroot/js/Index.js[m
+[1mindex 8dce3de..21042bc 100644[m
+[1m--- a/IntersysJs/wwwroot/js/Index.js[m
+[1m+++ b/IntersysJs/wwwroot/js/Index.js[m
+[36m@@ -1,18 +1,42 @@[m
+[31m-﻿[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-function createButton() {[m
+[32m+[m[32m﻿function createButton()[m
+[32m+[m[32m{[m
+     var btn = document.createElement("button");[m
+     btn.innerHTML = "Optional Power";[m
+     btn.addEventListener("click", function () {[m
+         var num1 = parseFloat(prompt("Give me number1:"));[m
+         var num2 = parseFloat(prompt("Give me number2: "));[m
+[32m+[m[32m        var result = askUser();[m
+[32m+[m[32m        if (result) {[m
+[32m+[m[32m           var powResult = optionalPow(num1, num2)[m
+[32m+[m[32m        }[m
+[32m+[m[32m        else[m
+[32m+[m[32m        {[m
+[32m+[m[32m            var powResult = optionalPow(num2, num1)[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        alert(`${powResult}`)[m
+[32m+[m
+     });[m
+[32m+[m
+     document.body.appendChild(btn);[m
+[32m+[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m[32mfunction askUser()[m
+[32m+[m[32m{[m
+[32m+[m[32m    var question = confirm("Do you like like programming");[m
+[32m+[m[32m    if (question)[m
+[32m+[m[32m    {[m
+[32m+[m[32m        return true;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    else[m
+[32m+[m[32m    {[m
+[32m+[m[32m        return false;[m
+[32m+[m	[32m}[m
+ }[m
+ [m
+ [m
+[31m-function optionalPow(a, b) {[m
+[31m-    [m
+[32m+[m[32mfunction optionalPow(num1, num2) {[m
+[32m+[m[32m    return Math.pow(num1, num2)[m
+ }[m
+\ No newline at end of file[m
