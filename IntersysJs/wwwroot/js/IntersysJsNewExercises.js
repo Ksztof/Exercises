@@ -59,12 +59,12 @@ function exercise2() {
 }
 
 
-function sendData(url, data, successCallback) {
+function sendData(url, data, type, successCallback) {
 	$.ajax({
-		type: "POST",
+		type: type,
 		url: url,
 		contentType: 'application/json; charset=utf-8',
-		data: JSON.stringify(data),
+		data: (type === 'POST') ? JSON.stringify(data) : data,
 		success: function (response) {
 			console.log("sendData success:", response);
 			if (successCallback) {
@@ -100,7 +100,7 @@ function exercise3() {
 					alert("Please enter number")
 				} else {
 					var data = { UserInput: inputAsNumber };
-					sendData('/Intersys/ThirdExercise', data, function (response) {
+					sendData('/Intersys/ThirdExercise', data, 'POST', function (response) {
 						console.log("successCallback response:", response);
 						//let responseData = JSON.parse(response);
 						let doubleUserInput = response.doubleUserInput;
@@ -140,8 +140,8 @@ function exercise4() {
 				if (isNaN(inputAsNumber) || isNaN(input.value) || inputAsNumber <= 0 || inputAsNumber > 100) {
 					alert("Please enter number from range 1 to 100")
 				} else {
-					var data = { UserInput: inputAsNumber };
-					sendData('/Intersys/FourthExercise', data, function (response) {
+					let data = { UserInput: inputAsNumber };
+					sendData('/Intersys/FourthExercise', data, 'POST', function (response) {
 						console.log("successCallback response:", response);
 						let firstName = response.firstName + " " + response.lastName;
 						createTable(form, firstName)
@@ -155,6 +155,53 @@ function exercise4() {
 
 }
 
+function exercise5() {
+	let tableAdded = false;
+	let button = document.createElement("button");
+	button.innerHTML = "exercise5";
+	let div = document.createElement("div");
+
+
+	button.addEventListener("click", function () {
+		if (!tableAdded) {
+			sendData('/Intersys/FifthExercise', {}, 'GET', function (response) {
+
+				let users = response;
+				let table = document.createElement("table");
+				table.style.border = "4px solid blue";
+				table.width = "100%";
+				let headerRow = document.createElement("tr");
+				let firstNameHeaderCell = document.createElement("th");
+				firstNameHeaderCell.innerHTML = "First Name";
+				headerRow.appendChild(firstNameHeaderCell);
+				let lastNameHeaderCell = document.createElement("th");
+				lastNameHeaderCell.innerHTML = "Last Name";
+				headerRow.appendChild(lastNameHeaderCell);
+				table.appendChild(headerRow);
+
+				for (var i = 0; i < users.length; i++) {
+					let row = document.createElement("tr");
+					let firstNameCell = document.createElement("td");
+					firstNameCell.style.border = "2px solid blue";
+					firstNameCell.style.margin = "2px 0";
+					firstNameCell.innerHTML = users[i].firstName;
+					row.appendChild(firstNameCell);
+					let lastNameCell = document.createElement("td");
+					lastNameCell.style.border = "2px solid blue";
+					lastNameCell.style.margin = "2px 0";
+					lastNameCell.innerHTML = users[i].lastName;
+					row.appendChild(lastNameCell);
+					table.appendChild(row);
+				}
+				tableAdded = true;
+				div.appendChild(table);
+			});
+		}
+	});
+	document.body.appendChild(div);
+	document.body.appendChild(button);
+
+}
 
 
 

@@ -9,9 +9,15 @@ namespace IntersysJs.Repositories
         {
         }
 
-		public async Task<UserTable> GetbyId(int id)
+		public async Task<UserTable> GetbyIdAsync(int id)
         {
             return await ExercisesDb.Users.FirstAsync(x => x.Id == id);
         }
+
+        public async Task<IEnumerable<UserTable>> GetUsersAsync()
+        {
+            var users = await ExercisesDb.Users.ToListAsync();
+            return users;
+		}
     }
 }

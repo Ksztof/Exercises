@@ -4,6 +4,8 @@ namespace IntersysJs.Repositories
 {
     public interface IExercisesRepository
     {
-        Task<UserTable> GetbyId(int id);
-    }
+        Task<UserTable> GetbyIdAsync(int id);
+		Task<IEnumerable<UserTable>> GetUsersAsync();
+
+	}
 }

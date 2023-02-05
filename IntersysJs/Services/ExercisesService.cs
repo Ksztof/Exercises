@@ -22,9 +22,14 @@ namespace IntersysJs.Services
 		{
 		}
 
-		public async Task<UserTable> GetById(int id)
+		public async Task<UserTable> GetByIdAsync(int id)
         {
-            return await exercisesRepository.GetbyId(id);	
+            return await exercisesRepository.GetbyIdAsync(id);	
         }
-    }
+
+		public async Task<IEnumerable<UserTable>> GetUsersAsync()
+		{
+			return await exercisesRepository.GetUsersAsync();
+		}
+	}
 }

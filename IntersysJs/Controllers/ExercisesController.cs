@@ -30,9 +30,18 @@ namespace IntersysJs.Controllers
         [Route("/Intersys/FourthExercise")]
 		public async Task<IActionResult> FourthExercise([FromBody] FirstExerciseModel data)
 		{
-			var user = await _exercisesService.GetById(data.UserInput);
-			var responseData = new {firstName = user.FirstName, lastName = user.LastName};
-			return new JsonResult(responseData);
+			var user = await _exercisesService.GetByIdAsync(data.UserInput);
+			return new JsonResult(user);
 		}
+
+		[HttpGet]
+		[Route("/Intersys/FifthExercise")]
+		public async Task<IActionResult> FifthExercise()
+		{
+			var users = await _exercisesService.GetUsersAsync();
+			return new JsonResult(users);
+		}
+
+
 	}
 }
