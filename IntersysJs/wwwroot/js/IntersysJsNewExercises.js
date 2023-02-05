@@ -157,14 +157,33 @@ function exercise4() {
 
 function exercise5() {
 	let tableAdded = false;
+	let formAdded = false;
 	let button = document.createElement("button");
 	button.innerHTML = "exercise5";
 	let div = document.createElement("div");
 
 
 	button.addEventListener("click", function () {
+
 		if (!tableAdded) {
 			sendData('/Intersys/FifthExercise', {}, 'GET', function (response) {
+
+				let form = document.createElement("form");
+
+				let input1 = document.createElement("input");
+				let input2 = document.createElement("input");
+
+				let submitButton = document.createElement("input");
+				submitButton.type = "submit";
+				submitButton.value = "Submit";
+
+
+				form.appendChild(input1);
+				form.appendChild(input2);
+				form.appendChild(submitButton);
+				document.body.appendChild(form);
+				
+
 
 				let users = response;
 				let table = document.createElement("table");
@@ -197,7 +216,10 @@ function exercise5() {
 				div.appendChild(table);
 			});
 		}
+
+
 	});
+
 	document.body.appendChild(div);
 	document.body.appendChild(button);
 
