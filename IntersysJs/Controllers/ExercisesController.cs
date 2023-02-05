@@ -1,4 +1,5 @@
 ﻿using IntersysJs.DataBase.DataBaseModels;
+using IntersysJs.FormModels;
 using IntersysJs.Models;
 using IntersysJs.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -40,6 +41,19 @@ namespace IntersysJs.Controllers
 		{
 			var users = await _exercisesService.GetUsersAsync();
 			return new JsonResult(users);
+		}
+
+		[HttpPost]
+		[Route("/Intersys/FifthExercise")]
+		public async Task<IActionResult> FifthExercise([FromBody] AddUserForm data)
+		{
+			var result = await _exercisesService.AddNewUserAsync(data);
+			if (!result)
+			{
+				return BadRequest("Can't add user");
+			}
+			else return new JsonResult(data);
+
 		}
 
 

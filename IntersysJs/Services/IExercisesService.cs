@@ -1,10 +1,13 @@
 ﻿using IntersysJs.DataBase.DataBaseModels;
+using IntersysJs.FormModels;
 
 namespace IntersysJs.Services
 {
 	public interface IExercisesService
 	{
-		public Task<UserTable> GetByIdAsync(int id);
-		public Task<IEnumerable<UserTable>> GetUsersAsync();
+		 Task<UserTable> GetByIdAsync(int id);
+		 Task<IEnumerable<UserTable>> GetUsersAsync();
+		 Task<bool> AddNewUserAsync(AddUserForm form);
+		
 	}
 }

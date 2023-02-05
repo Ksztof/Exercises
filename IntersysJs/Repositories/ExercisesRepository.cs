@@ -9,7 +9,21 @@ namespace IntersysJs.Repositories
         {
         }
 
-		public async Task<UserTable> GetbyIdAsync(int id)
+        public async Task<bool> AddNewUserAsync(UserTable user)
+        {
+            return await Task.Run(() =>
+            {
+				var result = ExercisesDb.Users.Add(user);
+				ExercisesDb.SaveChanges();
+                if (result == null)
+                {
+                    return false;
+                }
+                else return true;
+			});
+        }
+
+        public async Task<UserTable> GetbyIdAsync(int id)
         {
             return await ExercisesDb.Users.FirstAsync(x => x.Id == id);
         }

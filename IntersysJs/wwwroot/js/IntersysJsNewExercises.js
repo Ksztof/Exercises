@@ -143,8 +143,8 @@ function exercise4() {
 					let data = { UserInput: inputAsNumber };
 					sendData('/Intersys/FourthExercise', data, 'POST', function (response) {
 						console.log("successCallback response:", response);
-						let firstName = response.firstName + " " + response.lastName;
-						createTable(form, firstName)
+						let user = response.firstName + " " + response.lastName;
+						createTable(form, user)
 					});
 				}
 			});
@@ -177,13 +177,10 @@ function exercise5() {
 				submitButton.type = "submit";
 				submitButton.value = "Submit";
 
-
 				form.appendChild(input1);
 				form.appendChild(input2);
 				form.appendChild(submitButton);
 				document.body.appendChild(form);
-				
-
 
 				let users = response;
 				let table = document.createElement("table");
@@ -214,24 +211,44 @@ function exercise5() {
 				}
 				tableAdded = true;
 				div.appendChild(table);
+
+				form.addEventListener("submit", function (e) {
+					e.preventDefault();
+					let firstName = input1.value.trim();
+					let lastName = input2.value.trim();
+					if (firstName === "" || lastName === "") {
+						alert("Give me some input.");
+					} else {
+						let data = { FirstName: firstName, LastName: lastName };
+						sendData('/Intersys/FifthExercise', data, 'POST', function (response) {
+							console.log("successCallback response:", response);
+							let firstName = response.firstName;
+							let lastName = response.lastName
+							let row = document.createElement("tr");
+							let firstNameCell = document.createElement("td");
+							firstNameCell.style.border = "2px solid blue";
+							firstNameCell.style.margin = "2px 0";
+							firstNameCell.innerHTML = firstName;
+							row.appendChild(firstNameCell);
+
+							let lastNameCell = document.createElement("td");
+							lastNameCell.style.border = "2px solid blue";
+							lastNameCell.style.margin = "2px 0";
+							lastNameCell.innerHTML = lastName;
+							row.appendChild(lastNameCell);
+
+							table.appendChild(row);
+						});
+					}
+				});
 			});
 		}
-
-
 	});
 
 	document.body.appendChild(div);
 	document.body.appendChild(button);
 
 }
-
-
-
-
-
-
-
-
 
 
 function createTable(yourForm, input) {
