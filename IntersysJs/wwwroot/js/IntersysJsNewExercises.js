@@ -97,7 +97,7 @@ function exercise3() {
 				alert("Please enter number")
 			} else {
 				var data = { UserInput: inputAsNumber };
-				sendData('/Intersys/FirstExercise', data, function (response) {
+				sendData('/Intersys/ThirdExercise', data, function (response) {
 					console.log("successCallback response:", response);
 					let responseData = JSON.parse(response);
 					let doubleUserInput = responseData.doubleUserInput;
@@ -110,6 +110,52 @@ function exercise3() {
 	document.body.appendChild(button);
 
 }
+
+function exercise4() {
+	let button = document.createElement("button");
+	button.innerHTML = "exercise4";
+
+	button.addEventListener("click", function () {
+		let form = document.createElement("form");
+		let input = document.createElement("input");
+		let submitButton = document.createElement("input");
+		submitButton.type = "submit";
+		submitButton.value = "Submit";
+
+		form.appendChild(input);
+		form.appendChild(submitButton);
+		document.body.appendChild(form);
+
+		form.addEventListener("submit", function (e) {
+			e.preventDefault();
+			let inputAsNumber = parseFloat(input.value);
+			if (isNaN(inputAsNumber) || isNaN(input.value) || inputAsNumber <= 0 || inputAsNumber > 100) {
+				alert("Please enter number from range 1 to 100")
+			} else {
+				var data = { UserInput: inputAsNumber };
+				sendData('/Intersys/ThirdExercise', data, function (response) {
+					console.log("successCallback response:", response);
+					let responseData = JSON.parse(response);
+					let doubleUserInput = responseData.doubleUserInput;
+					createTable(form, doubleUserInput)
+				});
+			}
+		});
+	});
+
+	document.body.appendChild(button);
+
+}
+
+
+
+
+
+
+
+
+
+
 
 function createTable(yourForm, input) {
 	let userInput = input;
