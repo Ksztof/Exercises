@@ -76,35 +76,40 @@ function sendData(url, data, successCallback) {
 
 
 function exercise3() {
+	let formAdded = false;
 	let button = document.createElement("button");
 	button.innerHTML = "exercise3";
 
 	button.addEventListener("click", function () {
-		let form = document.createElement("form");
-		let input = document.createElement("input");
-		let submitButton = document.createElement("input");
-		submitButton.type = "submit";
-		submitButton.value = "Submit";
+		if (!formAdded) {
+			let form = document.createElement("form");
+			let input = document.createElement("input");
+			let submitButton = document.createElement("input");
+			submitButton.type = "submit";
+			submitButton.value = "Submit";
 
-		form.appendChild(input);
-		form.appendChild(submitButton);
-		document.body.appendChild(form);
+			form.appendChild(input);
+			form.appendChild(submitButton);
+			document.body.appendChild(form);
+			formAdded = true;
 
-		form.addEventListener("submit", function (e) {
-			e.preventDefault();
-			let inputAsNumber = parseFloat(input.value);
-			if (isNaN(inputAsNumber) || isNaN(input.value)) {
-				alert("Please enter number")
-			} else {
-				var data = { UserInput: inputAsNumber };
-				sendData('/Intersys/ThirdExercise', data, function (response) {
-					console.log("successCallback response:", response);
-					let responseData = JSON.parse(response);
-					let doubleUserInput = responseData.doubleUserInput;
-					createTable(form, doubleUserInput)
-				});
-			}
-		});
+			form.addEventListener("submit", function (e) {
+				e.preventDefault();
+				let inputAsNumber = parseFloat(input.value);
+				if (isNaN(inputAsNumber) || isNaN(input.value)) {
+					alert("Please enter number")
+				} else {
+					var data = { UserInput: inputAsNumber };
+					sendData('/Intersys/ThirdExercise', data, function (response) {
+						console.log("successCallback response:", response);
+						//let responseData = JSON.parse(response);
+						let doubleUserInput = response.doubleUserInput;
+						createTable(form, doubleUserInput)
+					});
+				}
+			});
+		}
+
 	});
 
 	document.body.appendChild(button);
@@ -112,35 +117,38 @@ function exercise3() {
 }
 
 function exercise4() {
+	let formAdded = false;
 	let button = document.createElement("button");
 	button.innerHTML = "exercise4";
 
 	button.addEventListener("click", function () {
-		let form = document.createElement("form");
-		let input = document.createElement("input");
-		let submitButton = document.createElement("input");
-		submitButton.type = "submit";
-		submitButton.value = "Submit";
+		if (!formAdded) {
+			let form = document.createElement("form");
+			let input = document.createElement("input");
+			let submitButton = document.createElement("input");
+			submitButton.type = "submit";
+			submitButton.value = "Submit";
 
-		form.appendChild(input);
-		form.appendChild(submitButton);
-		document.body.appendChild(form);
+			form.appendChild(input);
+			form.appendChild(submitButton);
+			document.body.appendChild(form);
+			formAdded = true;
 
-		form.addEventListener("submit", function (e) {
-			e.preventDefault();
-			let inputAsNumber = parseFloat(input.value);
-			if (isNaN(inputAsNumber) || isNaN(input.value) || inputAsNumber <= 0 || inputAsNumber > 100) {
-				alert("Please enter number from range 1 to 100")
-			} else {
-				var data = { UserInput: inputAsNumber };
-				sendData('/Intersys/ThirdExercise', data, function (response) {
-					console.log("successCallback response:", response);
-					let responseData = JSON.parse(response);
-					let doubleUserInput = responseData.doubleUserInput;
-					createTable(form, doubleUserInput)
-				});
-			}
-		});
+			form.addEventListener("submit", function (e) {
+				e.preventDefault();
+				let inputAsNumber = parseFloat(input.value);
+				if (isNaN(inputAsNumber) || isNaN(input.value) || inputAsNumber <= 0 || inputAsNumber > 100) {
+					alert("Please enter number from range 1 to 100")
+				} else {
+					var data = { UserInput: inputAsNumber };
+					sendData('/Intersys/FourthExercise', data, function (response) {
+						console.log("successCallback response:", response);
+						let firstName = response.firstName + " " + response.lastName;
+						createTable(form, firstName)
+					});
+				}
+			});
+		}
 	});
 
 	document.body.appendChild(button);

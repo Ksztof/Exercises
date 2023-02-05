@@ -4,7 +4,7 @@
 	{
 		private IntersysDb _db = null;
 
-		public virtual IntersysDb Db
+		public virtual IntersysDb ExercisesDb
 		{
 			get
 			{

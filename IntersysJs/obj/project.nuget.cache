@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CzOHewH86b4F7FRkXADqbhBT63g0fIIebiDCktbCRr24T+zHsbMq9+4NBH10gGMlK06LxGo4sDQjy5MVUoovRA==",
+  "dgSpecHash": "G0PZTD/I3kZUOBNpBY9nVKh6gYsyCHNuR9j4Z3q9YrFMVUO17PQJINavgs6vKY98+U7tYthYSQuSYxQgRqoKnA==",
   "success": true,
   "projectFilePath": "C:\\Users\\PeklerFix\\Desktop\\Intersys\\Intersys\\IntersysJs\\IntersysJs.csproj",
   "expectedPackageFiles": [
@@ -29,7 +29,7 @@
     "C:\\Users\\PeklerFix\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\PeklerFix\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\PeklerFix\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
-    "C:\\Users\\PeklerFix\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"
+    "C:\\Users\\PeklerFix\\.nuget\\packages\\system.text.json\\7.0.1\\system.text.json.7.0.1.nupkg.sha512"
   ],
   "logs": []
 }

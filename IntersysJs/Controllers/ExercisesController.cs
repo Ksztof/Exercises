@@ -1,24 +1,38 @@
-﻿using IntersysJs.Models;
+﻿using IntersysJs.DataBase.DataBaseModels;
+using IntersysJs.Models;
+using IntersysJs.Services;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace IntersysJs.Controllers
 {
     [Route("/Intersys")]
     [ApiController]
-    public class ExercisesController : ControllerBase
+    public class ExercisesController : ControllerBase 
     {
+		private IExercisesService _exercisesService;
+		public ExercisesController(IExercisesService exercisesService)
+		{
+			this._exercisesService = exercisesService; 
+		}
 
 		[HttpPost]
-        [Route("/Intersys/FirstExercise")]
-        public IActionResult FirstExercise([FromBody] FirstExerciseModel data)
+        [Route("/Intersys/ThirdExercise")]
+        public IActionResult ThirdExercise([FromBody] FirstExerciseModel data)
         {
             var doubleUserInput = data.UserInput * 2;
 			var responseData = new { doubleUserInput = doubleUserInput };
 
-			return Ok(JsonConvert.SerializeObject(responseData));
+			return new JsonResult(responseData);
 		}
 
-
-    }
+		[HttpPost]
+        [Route("/Intersys/FourthExercise")]
+		public async Task<IActionResult> FourthExercise([FromBody] FirstExerciseModel data)
+		{
+			var user = await _exercisesService.GetById(data.UserInput);
+			var responseData = new {firstName = user.FirstName, lastName = user.LastName};
+			return new JsonResult(responseData);
+		}
+	}
 }
