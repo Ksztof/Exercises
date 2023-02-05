@@ -14,7 +14,6 @@
 			submitButton.type = "submit";
 			submitButton.value = "alert input";
 
-
 			form.appendChild(input);
 			form.appendChild(submitButton);
 			document.body.appendChild(form);
@@ -24,10 +23,9 @@
 				let userInput = input.value;
 				alert(userInput);
 			});
-			
 		}
 	});
-document.body.appendChild(button);
+	document.body.appendChild(button);
 }
 
 
@@ -36,10 +34,8 @@ function exercise2() {
 	let button = document.createElement("button")
 	button.innerHTML = "exercise2";
 
-	button.addEventListener("click", function ()
-	{
-		if (!formAdded)
-		{
+	button.addEventListener("click", function () {
+		if (!formAdded) {
 			let form = document.createElement("form");
 			form.id = "exercise2FormId";
 			let input = document.createElement("input");
@@ -54,21 +50,92 @@ function exercise2() {
 
 			form.addEventListener("submit", function (event) {
 				event.preventDefault();
-
-				let userInput = input.value;
-				let table = document.createElement("table");
-				let headerRow = document.createElement("tr");
-				let headerCell = document.createElement("th");
-
-				table.style.border = "2px solid blue";
-				table.style.margin = "2px 0";
-				headerCell.innerHTML = userInput;
-				headerRow.appendChild(headerCell);
-				table.appendChild(headerRow);
-				form.appendChild(table);
+				createTable(form, input.value);
 			});
 		}
 	});
 	document.body.appendChild(button);
 
 }
+
+
+function sendData(url, data, successCallback) {
+	$.ajax({
+		type: "POST",
+		url: url,
+		contentType: 'application/json; charset=utf-8',
+		data: JSON.stringify(data),
+		success: function (response) {
+			console.log("sendData success:", response);
+			if (successCallback) {
+				successCallback(response);
+			}
+		}
+	});
+}
+
+
+function exercise3() {
+	let button = document.createElement("button");
+	button.innerHTML = "exercise3";
+
+	button.addEventListener("click", function () {
+		let form = document.createElement("form");
+		let input = document.createElement("input");
+		let submitButton = document.createElement("input");
+		submitButton.type = "submit";
+		submitButton.value = "Submit";
+
+		form.appendChild(input);
+		form.appendChild(submitButton);
+		document.body.appendChild(form);
+
+		form.addEventListener("submit", function (e) {
+			e.preventDefault();
+			let inputAsNumber = parseFloat(input.value);
+			if (isNaN(inputAsNumber) || isNaN(input.value)) {
+				alert("Please enter number")
+			} else {
+				var data = { UserInput: inputAsNumber };
+				sendData('/Intersys/FirstExercise', data, function (response) {
+					console.log("successCallback response:", response);
+					let responseData = JSON.parse(response);
+					let doubleUserInput = responseData.doubleUserInput;
+					createTable(form, doubleUserInput)
+				});
+			}
+		});
+	});
+
+	document.body.appendChild(button);
+
+}
+
+function createTable(yourForm, input) {
+	let userInput = input;
+	let table = document.createElement("table");
+	let headerRow = document.createElement("tr");
+	let headerCell = document.createElement("th");
+
+	table.style.border = "2px solid blue";
+	table.style.margin = "2px 0";
+	headerCell.innerHTML = userInput;
+	headerRow.appendChild(headerCell);
+	table.appendChild(headerRow);
+	yourForm.appendChild(table);
+}
+
+/*function sendData(url, data, successCallback) {
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', url, true);
+	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+	xhr.onload = function () {
+		if (xhr.status === 200) {
+			console.log('sendData success:', xhr.response);
+			if (successCallback) {
+				successCallback(xhr.response);
+			}
+		}
+	};
+	xhr.send(JSON.stringify(data));
+}*/
